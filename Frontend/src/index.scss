@@ -1,0 +1,244 @@
+/****** Bootstrap Colors ******/
+
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%);
+$gray-dark: lighten($gray-base, 20%);
+$gray: lighten($gray-base, 33.5%);
+$gray-light: lighten($gray-base, 46.7%);
+$gray-lighter: lighten($gray-base, 93.5%);
+$brand-primary: darken(#428bca, 6.5%);
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+$theme: #0288d1;
+
+$input-border: 1px solid #dce4ec;
+
+@media (min-width: 768px) {
+    .navbar {
+        border-radius: 0px;
+    }
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: lightblue;
+}
+
+.btn {
+    margin-bottom: unset;
+}
+
+.remove {
+    float: right;
+    margin: -4px;
+}
+
+.jumbotron {
+    background-color: $theme;
+}
+
+:focus {
+    outline: unset;
+    outline-color: unset;
+    outline-style: unset;
+    outline-width: unset;
+}
+
+.rw-state-focus {
+    outline: unset;
+    border: $input-border;
+    border-color: #2c3e50 !important;
+    box-shadow: unset !important;
+}
+
+.rw-dropdownlist-picker,
+.rw-select,
+.rw-input
+{
+    border: $input-border !important;
+}
+
+.rw-input:focus, .rw-input:active {
+    border-color: #2c3e50 !important;
+}
+
+.rw-datetimepicker {
+    width: 25rem;
+}
+
+.rw-dropdownlist {
+    width: 20rem;
+}
+
+
+/**
+* The geosuggest module
+* NOTE: duplicated font-sizes' are for browsers which don't support rem (only IE 8)
+*/
+
+.geosuggest {
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    &__input {
+        width: 100%;
+        padding: 6px 12px;
+    }
+    &__input:focus {
+        border-color: #2c3e50;
+        box-shadow: 0 0 0 transparent;
+    }
+    &__suggests {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 25em;
+        padding: 0;
+        margin-top: -1px;
+        background: #fff;
+        border: 2px solid #2c3e50;
+        border-top-width: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        list-style: none;
+        z-index: 5;
+        -webkit-transition: max-height 0.2s, border 0.2s;
+        transition: max-height 0.2s, border 0.2s;
+    }
+    &__suggests--hidden {
+        max-height: 0;
+        overflow: hidden;
+        border-width: 0;
+    }
+    &__item {
+        font-size: 14px;
+        padding: .5em .65em;
+        cursor: pointer;
+        &:hover,
+        &focus {
+            background: #f5f5f5;
+        }
+        &--active {
+            background: #267dc0;
+            color: #fff;
+            &hover,
+            &focus {
+                background: #ccc;
+            }
+        }
+        &__matched-text {
+            font-weight: bold;
+        }
+    }
+}
+
+form {
+    button {
+        color: black;
+        margin-right: 5px;
+    }
+    input,
+    textarea {
+        border-radius: 4px;
+        border-style: ridge;
+    }
+}
+
+// Bootstrap 4 Card Implementation in BS3
+.card {
+    position: relative;
+    display: block;
+    margin-bottom: 2.5rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0, 0, 0, .125);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 0;
+        margin-bottom: .75rem;
+        font-weight: bold;
+    }
+    &-block {
+        padding: 1.25rem;
+    }
+    &-img-top {
+        border-top-right-radius: calc(.25rem - 1px);
+        border-top-left-radius: calc(.25rem - 1px);
+    }
+    &-title {
+        margin-bottom: .75rem;
+    }
+    &-subtitle {
+        margin-top: -.375rem;
+        margin-bottom: 0;
+    }
+    &-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+    }
+    &-header:first-child {
+        border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    }
+    &-text:last-child {
+        margin-bottom: 0;
+    }
+    &-link {
+        margin-left: 1.25rem;
+    }
+    .list-group {
+        margin-bottom: 0;
+    }
+}
+
+.list-group-flush .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+
+
+/****** Footer ******/
+
+// .footer {
+//     background-color: $gray-lighter;
+// }
+
+// .footer p {
+//     margin: 20px 0;
+//     text-align: center;
+//     color: darken($gray-lighter, 40%);
+// }
+
+// .footer .glyphicon-heart {
+//     color: pink;
+// }
+
+
+// /*** Sticky Footer ***/
+
+// $footer-height: 60px;
+// html {
+//     position: relative;
+//     min-height: 100%;
+// }
+
+// body {
+//     margin-bottom: $footer-height;
+// }
+
+// .footer {
+//     position: absolute;
+//     bottom: 0;
+//     width: 100%;
+//     height: $footer-height;
+// }

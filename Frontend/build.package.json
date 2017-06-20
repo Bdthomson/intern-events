@@ -1,0 +1,22 @@
+{
+  "name": "ibm_intern_events",
+  "version": "1.0.0",
+  "description": "Frontend ",
+  "main": "index.js",
+  "dependencies": {
+    "cross-env": "^5.0.1"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=heroku node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bdthomson/intern-scheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bdthomson/intern-scheduler/issues"
+  },
+  "homepage": "https://github.com/Bdthomson/intern-scheduler#readme"
+}
