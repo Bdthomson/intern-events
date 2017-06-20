@@ -13,13 +13,13 @@ INTERN_EVENTS_DB_PORT
 INTERN_EVENTS_DB_NAME
 ```
 
-Frontend
-Set the `REACT_APP_INTERN_EVENTS_LOCAL_API` variable in the Frontend Projects `.env` file.
-
 Backend API Server
+
 `cd Backend && mvn clean package && java -jar ./target/app.jar`
 
 Frontend App
+
+Set the `REACT_APP_INTERN_EVENTS_LOCAL_API` variable in the Frontend Projects `.env` file.
 `cd Frontend && npm run dev` , which starts `webpack-dev-server`.
 
 ## Deploy Instructions
