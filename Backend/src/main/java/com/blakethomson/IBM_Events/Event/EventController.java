@@ -1,5 +1,6 @@
 package com.blakethomson.IBM_Events.Event;
 
+import com.blakethomson.IBM_Events.Guest.Guest;
 import org.slf4j.Logger;
 
 import org.slf4j.LoggerFactory;
@@ -64,17 +65,29 @@ public class EventController {
 
 
     // Guest Mappings
+//
+    @RequestMapping(method=RequestMethod.POST, value="/events/{eventId}/guests")
+    public ResponseEntity<?> addGuest(@RequestBody Guest guest, @PathVariable String eventId){
 
-    @RequestMapping(method=RequestMethod.POST, value="/events/{id}/guests")
-    public ResponseEntity<?> addEvent(@RequestBody Event event, @PathVariable String id){
-
-        logger.info("Adding event : {}", event);
+        logger.info("Adding guest : {}", guest);
 
         //TODO: Check for duplicate names.
 
-        eventService.addEvent(event);
+        eventService.addGuestToEvent(guest, eventId);
 
-        return new ResponseEntity<>(event, HttpStatus.CREATED);
+        return new ResponseEntity<>(guest, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(method=RequestMethod.DELETE, value="/events/{eventId}/guests/{id}")
+    public ResponseEntity<?> removeGuest(@PathVariable String eventId, @PathVariable String id){
+
+        logger.info("Removing guest with id : {}", id);
+
+        //TODO: Check for duplicate names.
+
+        eventService.removeGuestFromEvent(id, eventId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

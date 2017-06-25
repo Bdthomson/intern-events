@@ -1,5 +1,6 @@
 package com.blakethomson.IBM_Events.Event;
 
+import com.blakethomson.IBM_Events.Guest.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,22 @@ public class EventService {
 
     public void deleteAllEvents() {
         eventRepository.deleteAll();
+    }
+
+    public void addGuestToEvent(Guest guest, String eventId){
+//        eventRepository.pushGuest(guest, eventId);
+        Event temp = eventRepository.findOne(eventId);
+        List<Guest> guests = temp.getGuests();
+        guests.add(guest);
+        temp.setGuests(guests);
+        eventRepository.save(temp);
+    }
+
+    public void removeGuestFromEvent(String guestId, String eventId){
+        Event temp = eventRepository.findOne(eventId);
+        List<Guest> tempGuests = temp.getGuests();
+        tempGuests.removeIf(guest -> guest.getId().equals(guestId));
+        temp.setGuests(tempGuests);
+        eventRepository.save(temp);
     }
 }

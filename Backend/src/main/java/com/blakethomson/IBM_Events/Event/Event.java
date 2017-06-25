@@ -1,6 +1,6 @@
 package com.blakethomson.IBM_Events.Event;
 
-
+import com.blakethomson.IBM_Events.Guest.Guest;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
@@ -19,6 +19,8 @@ public @Data class Event {
     private String description;
     private String datetime;
     private boolean restricted;
-    private List<String> guests = new ArrayList<>();
+
+    
+    private List<Guest> guests = new ArrayList<>();
 
 }
