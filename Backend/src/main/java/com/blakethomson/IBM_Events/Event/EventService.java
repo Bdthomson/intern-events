@@ -1,4 +1,4 @@
-package com.blakethomson.IBM_Lunch.Event;
+package com.blakethomson.IBM_Events.Event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
