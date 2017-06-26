@@ -42,6 +42,13 @@ const AddEventForm = props => {
         <Field name="placeId" component={hiddenField} />
 
         <Field
+          name="creator"
+          label="Event Creator"
+          component={inputField}
+          placeholder="Your Name"
+        />
+
+        <Field
           name="type"
           label="Type"
           component={dropdownField}
@@ -49,6 +56,16 @@ const AddEventForm = props => {
           textField="event"
           valueField="value"
         />
+
+
+        <Field
+          name="restricted"
+          id="restricted"
+          component="input"
+          type="checkbox"
+        />
+
+        <label htmlFor="restricted">&nbsp;&nbsp;21 and Over</label>
 
         <Field
           name="location"
@@ -82,9 +99,10 @@ const validate = values => {
   let errors = {};
 
   if (!values.get('name')) errors.name = "Required";
+  if (!values.get('creator')) errors.creator = "Required";
   if (!values.get('type')) errors.type = "Required";
   if (!values.get('location')) errors.location = "Required";
-  if (!values.get('datetime')) errors.time = "Required";
+  if (!values.get('datetime')) errors.datetime = "Required";
 
   return errors;
 }

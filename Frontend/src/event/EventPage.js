@@ -14,11 +14,13 @@ class EventPage extends Component {
         return (
             <div>
                 <h1>{this.props.events.size === 0 ? "No Events" : null}</h1>
-                {this.props.events.map(e => <Event key={e.get('id')} event={e} />)}
+                {this.props.events.sort(byDate).map(e => <Event key={e.get('id')} event={e} />)}
             </div>
         );
     }
 }
+
+const byDate = (a, b) => a.get('datetime') > b.get('datetime')
 
 function mapStateToProps(state) {
     return {

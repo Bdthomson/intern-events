@@ -79,8 +79,17 @@ export class geosuggestField extends Component {
 
     result.name = fields[0];
     fields.shift()
-    result.address = fields.join(',')
-    console.log("Split: ", { result });
+
+    let address = fields.join(',')
+
+    // HACK: This just shortens the saved address.
+    fields = address.split(', United States')
+
+    console.log(fields);
+
+    result.address = fields[0]
+
+    console.log({result});
 
     return result;
   }
@@ -113,12 +122,13 @@ export class geosuggestField extends Component {
 }
 
 export const dateTimeField = props => {
-  const { label, input: {onChange, value} } = props;
+  const { label, input: {onChange, value}, meta: {error, touched} } = props;
   return (
-    <FormGroup>
+    <FormGroup validationState={error && touched ? 'error' : null}>
       <label>{label}</label>
+      <ControlLabel>{touched && error && <span>&nbsp;&nbsp;{error}</span>}</ControlLabel>
       <DateTimePicker
-        step={10}
+        step={15}
         onChange={onChange}
         format="MMM DD - hh:mm a"
         value={!value ? null : new Date(value)}

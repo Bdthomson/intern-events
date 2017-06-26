@@ -2,7 +2,7 @@ import Immutable from 'immutable'
 import axios from 'axios';
 import { createAction, handleActions } from 'redux-actions';
 
-const API_URL = process.env.NODE_ENV === 'development' 
+const API_URL = process.env.NODE_ENV === 'development'
   ? process.env.REACT_APP_INTERN_EVENTS_LOCAL_API
   : process.env.REACT_APP_INTERN_EVENTS_API;
 
@@ -83,18 +83,17 @@ reducerMap[REMOVE_EVENT] = (state, { payload }) => {
 export const ADD_GUEST = 'Event/ADD_GUEST';
 export const addGuest = createAction(ADD_GUEST);
 export function addGuestRequest(rID, guest) {
+  console.log("Guest: ", guest);
   return (dispatch, getstate) => {
-    dispatch(addGuest({ rID, guest }))
-    // return axios.post(`${API_URL}/events/${rID}/guests`, {
-    //   headers: {'Content-Type': 'application/json'}
-    // })
-    //   .then((response) => {
-    //     dispatch(addGuestRequest(rID, response.data))
-    //     // return response // Might be needed for testing
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    return axios.post(`${API_URL}/events/${rID}/guests`, guest, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => {
+        dispatch(addGuest({ rID, guest }))
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 reducerMap[ADD_GUEST] = (state, action) => {
@@ -107,6 +106,40 @@ reducerMap[ADD_GUEST] = (state, action) => {
   // Push the new guest onto the event.
   return state.updateIn(['events', index, 'guests'], arr => arr.push(Immutable.fromJS(guest)))
 }
+
+// Removing Event
+export const REMOVE_GUEST = 'Event/REMOVE_GUEST';
+export const removeGuest = createAction(REMOVE_GUEST);
+export function removeGuestRequest(eventId, id) {
+  return (dispatch, getState) => {
+    console.log("Called");
+    axios.delete(`${API_URL}/events/${eventId}/guests/${id}`)
+      .then((res) => {
+        dispatch(removeGuest({ eventId, id }));
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err) {
+          console.log(err.response);
+        }
+      });
+  };
+}
+reducerMap[REMOVE_GUEST] = (state, { payload }) => {
+  console.log({ payload });
+  const { eventId, id } = payload;
+
+  // Get index of event.
+  const eventIndex = state.get('events').findIndex(i => i.get('id') === eventId)
+
+  // Get index of guest.
+  const guestIndex = state.getIn(['events', eventIndex, 'guests']).findIndex(i => i.get('id') === id)
+
+  console.log({ eventIndex });
+  console.log({ guestIndex });
+
+  return state.updateIn(['events', eventIndex, 'guests'], arr => arr.delete(guestIndex))
+};
 
 
 

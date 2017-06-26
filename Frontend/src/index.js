@@ -7,6 +7,7 @@ import { configureStore } from './app/store';
 // create-react-app requirement
 import registerServiceWorker from './registerServiceWorker';
 
+import 'font-awesome/css/font-awesome.min.css'
 import 'react-widgets/dist/css/react-widgets.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';

@@ -17,15 +17,15 @@ const onSubmit = (values, dispatch, props) => {
 }
 
 const SignUpForm = props => {
-    const { handleSubmit } = props
+    const { handleSubmit } = props;
     return (
         <Form className="white-text" onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <div>
                     <Field name="name" component={inputField}
                         label="Your Name" placeholder="Enter name" />
-                    <Field name="email" component={inputField}
-                        label="Email (To be notified)" placeholder="Enter email" type="text" />
+                    {/*<Field name="email" component={inputField}*/}
+                    {/*label="Email (To be notified)" placeholder="Enter email" type="text" />*/}
                     {/*TODO: change back to email after testing*/}
 
                     <Button bsStyle="primary" type="submit">Add Yourself</Button>
