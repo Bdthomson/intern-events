@@ -4,7 +4,8 @@
   "description": "Frontend ",
   "main": "index.js",
   "dependencies": {
-    "cross-env": "^5.0.1"
+    "cross-env": "^5.0.1",
+    "express": "^4.15.3"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=heroku node server.js"

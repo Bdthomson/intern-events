@@ -15,7 +15,7 @@ cp build.package.json build/package.json
 cd build && git init
 
 # Set the app in heroku.
-heroku git:remote -a app-ibm-intern-events
+heroku git:remote -a blue-events
 
 # Add files to git and commit.
 git add . && git commit -m "Build"

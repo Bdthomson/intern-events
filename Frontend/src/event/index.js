@@ -12,7 +12,7 @@ console.log("NODE_env: ", process.env.NODE_ENV);
 const reducerMap = {};
 
 const INITIAL_STATE = Immutable.fromJS({
-  events: null
+  events: []
 });
 
 export const FETCH_EVENTS = 'Event/FETCH_EVENTS';

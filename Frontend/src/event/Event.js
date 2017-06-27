@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { removeEventRequest, removeGuestRequest } from '.';
+import RemoveEvent from './RemoveEvent';
 
 class Event extends Component {
     render() {
@@ -23,7 +24,8 @@ class Event extends Component {
                             </a>
                         </h2>
                         {/*TODO: Add Modal confirmation here*/}
-                        <Button className="remove" bsStyle="primary" onClick={() => this.props.deleteEvent(id)}>X</Button>
+                        <RemoveEvent name={name} id={id} callback={this.props.deleteEvent}/>
+                        {/*<Button className="remove" bsStyle="primary" onClick={() => this.props.deleteEvent(id)}>X</Button>*/}
                         <br />
                         <p style={{ clear: 'left' }}>{address}</p>
                         <p style={{ clear: 'left', marginBottom: '0px' }}>
